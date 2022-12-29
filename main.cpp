@@ -4,7 +4,7 @@
 int main()
 {
 	glfwInit();
-	GLFWwindow* w = glfwCreateWindow(600, 600, "a great window!", NULL, NULL);
+	GLFWwindow* w = glfwCreateWindow(600, 600, "Polies & Ponies!", NULL, NULL);
 	glfwMakeContextCurrent(w);
 	gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 	float t[] =
