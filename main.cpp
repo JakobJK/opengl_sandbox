@@ -11,6 +11,8 @@ const unsigned int SCR_HEIGHT = 600;
 std::string title = "Polies & Ponies";
 const char* SCR_TITLE = title.c_str();
 
+
+// Vertex shader defined in GS
 const char *vertexShaderSource = "#version 330 core\n"
 "layout (location = 0) in vec3 aPos;\n"
 "void main()\n"
@@ -147,6 +149,7 @@ int main()
 
 		glUseProgram(shaderProgram);
 		glBindVertexArray(VAO);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 		glfwSwapBuffers(window);
