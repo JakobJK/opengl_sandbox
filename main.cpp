@@ -149,7 +149,10 @@ int main()
 
 		glUseProgram(shaderProgram);
 		glBindVertexArray(VAO);
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
+			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
+			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 		glfwSwapBuffers(window);
