@@ -15,16 +15,19 @@ const char* SCR_TITLE = title.c_str();
 // Vertex shader defined in GS
 const char *vertexShaderSource = "#version 330 core\n"
 "layout (location = 0) in vec3 aPos;\n"
+"out vec4 vertexColor;"
 "void main()\n"
 "{\n"
-"   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+"   gl_Position = vec4(aPos, 1.0);\n"
+"   vertexColor = vec4(0.5, 0.0, 0.0, 1.0);\n"
 "}\0";
 
 const char *fragmentShaderSource = "#version 330 core\n"
 "out vec4 FragColor;\n"
+"in vec4 vertexColor;\n"
 "void main()\n"
 "{\n"
-"	FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+"	FragColor = vertexColor;\n"
 "}\0";
 
 			
@@ -149,10 +152,6 @@ int main()
 
 		glUseProgram(shaderProgram);
 		glBindVertexArray(VAO);
-		if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
-			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-		if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
-			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
 		glfwSwapBuffers(window);
