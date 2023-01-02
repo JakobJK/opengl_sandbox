@@ -83,6 +83,9 @@ class Shader {
         {
             glUniform1f(glGetUniformLocation(ID, name.c_str()), value); 
         }
+        void deleteProgram(){
+            glDeleteProgram(ID);
+        }
 
     private:     
     void checkCompileErrors(unsigned int shader, std::string type)
