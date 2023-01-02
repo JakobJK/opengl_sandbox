@@ -77,7 +77,7 @@ int main()
 
 	// glBindVertexArray(0);
 	
-	glUseProgram(shaderProgram);
+	// glUseProgram(shaderProgram);
 
 	while(!glfwWindowShouldClose(window))
 	{
@@ -97,7 +97,7 @@ int main()
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
     glDeleteBuffers(1, &EBO);
-    glDeleteProgram(shaderProgram);
+    // glDeleteProgram(shaderProgram);
 
 	glfwTerminate();
 	return 0;

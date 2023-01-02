@@ -21,8 +21,8 @@ class Shader {
             std::ifstream fShaderfile;
 
 
-            vShaderfile.exceptions (std::ifstrea::failbit | std::ifstream::badbit);
-            fShaderFile.exceptions (std::ifstrea::failbit | std::ifstream::badbit);
+            vShaderfile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
+            fShaderfile.exceptions (std::ifstream::failbit | std::ifstream::badbit);
             try
             {
                 vShaderfile.open(vertexPath);
@@ -31,8 +31,8 @@ class Shader {
                 vShaderStream << vShaderfile.rdbuf();
                 fShaderStream << fShaderfile.rdbuf();
 
-                vShaderFile.close();
-                fShaderFile.close();
+                vShaderfile.close();
+                fShaderfile.close();
 
                 vertexCode   = vShaderStream.str();
                 fragmentCode = fShaderStream.str();
@@ -48,7 +48,7 @@ class Shader {
 
             //vert
             vertex = glCreateShader(GL_VERTEX_SHADER);
-            glShaderSource(vertex, 1, &ShaderCode, NULL);
+            glShaderSource(vertex, 1, &vShaderCode, NULL);
             glCompileShader(vertex);
             checkCompileErrors(vertex, "VERTEX");
             //frag
@@ -60,7 +60,7 @@ class Shader {
             ID = glCreateProgram();
             glAttachShader(ID, vertex);
             glAttachShader(ID, fragment);
-            gLinkProgram(ID);
+            glLinkProgram(ID);
             checkCompileErrors(ID, "PROGRAM");
 
             glDeleteShader(vertex);
