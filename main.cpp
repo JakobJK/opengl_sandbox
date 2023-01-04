@@ -5,9 +5,9 @@
 #include <math.h>
 #include "stb_image.cpp"
 #include "shader.h"
-#include "include/glm/glm.hpp"
-#include "include/glm/gtc/matrix_transform.hpp"
-#include "include/glm/gtc/type_ptr.hpp"
+#include "include/glm/glm/glm.hpp"
+#include "include/glm/glm/gtc/matrix_transform.hpp"
+#include "include/glm/glm/gtc/type_ptr.hpp"
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void processInput(GLFWwindow *window);
@@ -16,8 +16,6 @@ const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 std::string title = "Polies & Ponies";
 const char* SCR_TITLE = title.c_str();
-
-
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
@@ -131,8 +129,8 @@ int main()
 
 	ourShader.use();
 
-	glUniform1i(glGetUniformLocation(ourShader.ID, "texture1"), 0);
-	ourShader.setInt("texture2", 1);
+    ourShader.setInt("texture1", 0);
+    ourShader.setInt("texture2", 1);
 
 	while(!glfwWindowShouldClose(window))
 	{
@@ -145,7 +143,18 @@ int main()
 		glBindTexture(GL_TEXTURE_2D, texture1);
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_2D, texture2);
+
+
+		glm::mat4 transform = glm::mat3(1.0f);
+		transform = glm::translate(transform, glm::vec3(0.5f, -0.5f, 0.0f));
+		transform = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+
+		
         ourShader.use();
+		unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "transform");
+		glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(transform));
+		
+		
 		glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
