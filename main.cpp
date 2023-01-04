@@ -131,7 +131,7 @@ int main()
 
 	ourShader.use();
 
-	glUniformli(glGetUniformLocation(ourShader.ID, "texture1"), 0);
+	glUniform1i(glGetUniformLocation(ourShader.ID, "texture1"), 0);
 	ourShader.setInt("texture2", 1);
 
 	while(!glfwWindowShouldClose(window))
