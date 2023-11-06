@@ -1,0 +1,11 @@
+{
+  "CompileFlags": {
+    "Add": [
+      "-I/home/jake/libs/glad/include"
+    ]
+  },
+  "Index": {
+    "Background": "Build"
+  }
+}
+
