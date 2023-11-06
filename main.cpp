@@ -124,7 +124,6 @@ int main()
 	stbi_image_free(data);
 
 	ourShader.use();
-
     ourShader.setInt("texture1", 0);
     ourShader.setInt("texture2", 1);
 
