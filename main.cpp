@@ -124,6 +124,7 @@ int main()
 	stbi_image_free(data);
 
 	ourShader.use();
+
     ourShader.setInt("texture1", 0);
     ourShader.setInt("texture2", 1);
 
@@ -141,8 +142,7 @@ int main()
 
 
 		glm::mat4 transform = glm::mat4(1.0f);
-
-        transform = glm::translate(transform, glm::vec3(0.5f, -0.5f, 0.0f));
+        transform = glm::translate(transform, glm::vec3(0.25f, 0.25f, 0.0f));
         transform = glm::rotate(transform, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
 		
         ourShader.use();
